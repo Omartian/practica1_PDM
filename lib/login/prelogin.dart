@@ -1,4 +1,6 @@
+import 'package:estructura_practica_1/login/login.dart';
 import 'package:flutter/material.dart';
+import 'package:estructura_practica_1/login/register.dart';
 
 class Prelogin extends StatelessWidget {
   const Prelogin({Key key}) : super(key: key);
@@ -33,7 +35,12 @@ class Prelogin extends StatelessWidget {
                     color: Color(0xFFBCB0A1),
                     height: 50,
                     minWidth: 350,
-                    onPressed: () {})
+                    onPressed: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return Register();
+                      }));
+                    })
               ],
             ),
           ),
@@ -50,7 +57,12 @@ class Prelogin extends StatelessWidget {
                     color: Color(0xFFBCB0A1),
                     height: 50,
                     minWidth: 350,
-                    onPressed: () {})
+                    onPressed: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return Login();
+                      }));
+                    })
               ],
             ),
           )

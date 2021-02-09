@@ -1,3 +1,4 @@
+import 'package:estructura_practica_1/login/login.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
@@ -123,7 +124,12 @@ class _RegisterState extends State<Register> {
                 "¿Ya tienes una cuenta?",
                 style: TextStyle(color: Colors.white),
               ),
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return Login();
+                }));
+              },
             ),
           ),
         ],

@@ -1,3 +1,6 @@
+import 'package:estructura_practica_1/home/home.dart';
+import 'package:estructura_practica_1/login/register.dart';
+import 'package:estructura_practica_1/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -76,7 +79,12 @@ class _LoginState extends State<Login> {
                     color: Color(0xFFBCB0A1),
                     height: 50,
                     minWidth: 350,
-                    onPressed: () {})
+                    onPressed: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return Home(title: APP_TITLE);
+                      }));
+                    })
               ],
             ),
           ),
@@ -94,7 +102,12 @@ class _LoginState extends State<Login> {
                 "¿Aún no tienes una cuenta?",
                 style: TextStyle(color: Colors.white),
               ),
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return Register();
+                }));
+              },
             ),
           ),
         ],
