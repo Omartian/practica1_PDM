@@ -23,7 +23,7 @@ class ItemHome extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
               ),
-              color: Colors.indigo,
+              color: Colors.grey,
               child: Container(height: 180),
             ),
           ),

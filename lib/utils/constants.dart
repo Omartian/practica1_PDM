@@ -16,3 +16,6 @@ const String PROFILE_PICTURE =
 
 // app
 const Color PRIMARY_COLOR = Colors.indigo;
+const Color ACCENT_COLOR = Colors.orange;
+const Color TILE_BACKGROUND_COLOR = Color(0xBCB0A1);
+const Color TEXT_COLOR = Color(0x121B22);
