@@ -1,3 +1,4 @@
+import 'package:estructura_practica_1/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:estructura_practica_1/drinks/item_hot_drinks.dart';
 import 'package:estructura_practica_1/models/product_hot_drinks.dart';
@@ -14,6 +15,21 @@ class HotDrinksPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Bebidas"),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.person),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => Profile()),
+              );
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {},
+          )
+        ],
       ),
       body: ListView.builder(
         itemCount: drinksList.length,

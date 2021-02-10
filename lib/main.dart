@@ -13,9 +13,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: APP_TITLE,
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primarySwatch: PRIMARY_COLOR,
-          backgroundColor: PRIMARY_COLOR,
+          primarySwatch: ACCENT_COLOR,
+          backgroundColor: Colors.white,
           accentColor: ACCENT_COLOR),
       home: Splash2(),
     );
@@ -40,13 +41,14 @@ class SecondScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: APP_TITLE,
       theme: ThemeData(
           primarySwatch: PRIMARY_COLOR,
-          backgroundColor: PRIMARY_COLOR,
-          accentColor: ACCENT_COLOR,
+          backgroundColor: Colors.white,
+          accentColor: Colors.white,
           cardColor: ACCENT_COLOR,
-          canvasColor: ACCENT_COLOR,
+          canvasColor: Colors.white,
           textTheme: TextTheme(
               body1: TextStyle(
             color: TEXT_COLOR,
