@@ -1,4 +1,6 @@
+import 'package:estructura_practica_1/desserts/desserts_page.dart';
 import 'package:estructura_practica_1/drinks/hot_drinks_page.dart';
+import 'package:estructura_practica_1/grains/grains_page.dart';
 import 'package:estructura_practica_1/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:estructura_practica_1/home/item_home.dart';
@@ -83,7 +85,7 @@ class _HomeState extends State<Home> {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) {
-          return HotDrinksPage(drinksList: drinks);
+          return GrainsPage(grains: grains);
         },
       ),
     );
@@ -91,7 +93,11 @@ class _HomeState extends State<Home> {
 
   void _openDessertPage() {
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => null),
+      MaterialPageRoute(
+        builder: (context) {
+          return DessertsPage(desserts: desserts);
+        },
+      ),
     );
   }
 }
