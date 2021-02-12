@@ -1,3 +1,4 @@
+import 'package:estructura_practica_1/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class ItemHome extends StatelessWidget {
@@ -31,7 +32,7 @@ class ItemHome extends StatelessWidget {
             height: 160,
             margin: EdgeInsets.only(top: 28, bottom: 24, left: 24, right: 24),
             decoration: BoxDecoration(
-              color: Colors.grey[200],
+              color: ACCENT_COLOR,
               borderRadius: BorderRadius.all(
                 Radius.circular(30),
               ),
@@ -42,7 +43,7 @@ class ItemHome extends StatelessWidget {
                   margin: EdgeInsets.only(left: 16),
                   width: 160,
                   decoration: BoxDecoration(
-                    color: Colors.yellow[300],
+                    color: ACCENT_COLOR,
                     borderRadius: BorderRadius.all(
                       Radius.circular(30),
                     ),
@@ -51,10 +52,9 @@ class ItemHome extends StatelessWidget {
                     padding: const EdgeInsets.all(24.0),
                     child: Text(
                       "$title",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline5
-                          .copyWith(fontWeight: FontWeight.bold),
+                      style: Theme.of(context).textTheme.headline5.copyWith(
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'AkzidenzGrotezk'),
                       textAlign: TextAlign.center,
                     ),
                   ),

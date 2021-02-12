@@ -1,4 +1,6 @@
+import 'package:estructura_practica_1/cart/payment.dart';
 import 'package:estructura_practica_1/models/product_hot_drinks.dart';
+import 'package:estructura_practica_1/models/product_item_cart.dart';
 import 'package:estructura_practica_1/utils/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -14,10 +16,12 @@ class ItemHotDrinksDetails extends StatefulWidget {
 }
 
 class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
+  var _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     var price = widget.drink.productPrice;
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Text("${widget.drink.productTitle}"),
         centerTitle: true,
@@ -173,7 +177,9 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
                           fontWeight: FontWeight.w300,
                           color: Colors.white),
                     ),
-                    onPressed: () {}),
+                    onPressed: () {
+                      _addToCart();
+                    }),
                 MaterialButton(
                     color: ACCENT_COLOR,
                     height: 50,
@@ -186,12 +192,48 @@ class _ItemHotDrinksDetailsState extends State<ItemHotDrinksDetails> {
                           fontWeight: FontWeight.w300,
                           color: Colors.white),
                     ),
-                    onPressed: () {})
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return Payment();
+                          },
+                        ),
+                      );
+                    })
               ],
             ),
           )
         ],
       ),
     );
+  }
+
+  void _addToCart() {
+    bool exists = false;
+    for (ProductItemCart product in cartlist) {
+      if (product.productTitle == widget.drink.productTitle) {
+        exists = true;
+      }
+    }
+    if (!exists) {
+      ProductItemCart product = new ProductItemCart(
+          productTitle: widget.drink.productTitle,
+          productAmount: 1,
+          productPrice: widget.drink.productPrice,
+          productImage: widget.drink.productImage,
+          liked: widget.drink.liked);
+      cartlist.add(product);
+      final snackBar = SnackBar(content: Text("Producto agregado al carrito"));
+      _scaffoldKey.currentState
+        ..hideCurrentSnackBar()
+        ..showSnackBar(snackBar);
+    } else {
+      final snackBar =
+          SnackBar(content: Text("El producto ya se encontraba en el carrito"));
+      _scaffoldKey.currentState
+        ..hideCurrentSnackBar()
+        ..showSnackBar(snackBar);
+    }
   }
 }

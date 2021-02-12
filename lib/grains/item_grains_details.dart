@@ -1,5 +1,7 @@
+import 'package:estructura_practica_1/cart/payment.dart';
 import 'package:estructura_practica_1/grains/item_grains.dart';
 import 'package:estructura_practica_1/models/product_grains.dart';
+import 'package:estructura_practica_1/models/product_item_cart.dart';
 import 'package:estructura_practica_1/utils/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -15,9 +17,11 @@ class ItemGrainsDetails extends StatefulWidget {
 }
 
 class _ItemGrainsDetailsState extends State<ItemGrainsDetails> {
+  var _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Text("${widget.grain.productTitle}"),
         centerTitle: true,
@@ -158,7 +162,9 @@ class _ItemGrainsDetailsState extends State<ItemGrainsDetails> {
                           fontWeight: FontWeight.w300,
                           color: Colors.white),
                     ),
-                    onPressed: () {}),
+                    onPressed: () {
+                      _addToCart();
+                    }),
                 MaterialButton(
                     color: ACCENT_COLOR,
                     height: 50,
@@ -171,12 +177,48 @@ class _ItemGrainsDetailsState extends State<ItemGrainsDetails> {
                           fontWeight: FontWeight.w300,
                           color: Colors.white),
                     ),
-                    onPressed: () {})
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return Payment();
+                          },
+                        ),
+                      );
+                    })
               ],
             ),
           )
         ],
       ),
     );
+  }
+
+  void _addToCart() {
+    bool exists = false;
+    for (ProductItemCart product in cartlist) {
+      if (product.productTitle == widget.grain.productTitle) {
+        exists = true;
+      }
+    }
+    if (!exists) {
+      ProductItemCart product = new ProductItemCart(
+          productTitle: widget.grain.productTitle,
+          productAmount: 1,
+          productPrice: widget.grain.productPrice,
+          productImage: widget.grain.productImage,
+          liked: widget.grain.liked);
+      cartlist.add(product);
+      final snackBar = SnackBar(content: Text("Producto agregado al carrito"));
+      _scaffoldKey.currentState
+        ..hideCurrentSnackBar()
+        ..showSnackBar(snackBar);
+    } else {
+      final snackBar =
+          SnackBar(content: Text("El producto ya se encontraba en el carrito"));
+      _scaffoldKey.currentState
+        ..hideCurrentSnackBar()
+        ..showSnackBar(snackBar);
+    }
   }
 }

@@ -1,3 +1,4 @@
+import 'package:estructura_practica_1/cart/cart.dart';
 import 'package:estructura_practica_1/desserts/desserts_page.dart';
 import 'package:estructura_practica_1/drinks/hot_drinks_page.dart';
 import 'package:estructura_practica_1/grains/grains_page.dart';
@@ -15,9 +16,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  var _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
@@ -32,7 +35,11 @@ class _HomeState extends State<Home> {
           ),
           IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => Cart(productsList: cartlist)),
+              );
+            },
           )
         ],
       ),
@@ -59,10 +66,17 @@ class _HomeState extends State<Home> {
               image: "https://i.imgur.com/5MZocC1.png",
             ),
           ),
-          ItemHome(
-            // TODO: Al hacer clic, que muestre un snackbar de "Proximamente"
-            title: "Tazas",
-            image: "https://i.imgur.com/fMjtSpy.png",
+          GestureDetector(
+            onTap: () {
+              final snackBar = SnackBar(content: Text("Proximamente..."));
+              _scaffoldKey.currentState
+                ..hideCurrentSnackBar()
+                ..showSnackBar(snackBar);
+            },
+            child: ItemHome(
+              title: "Tazas",
+              image: "https://i.imgur.com/fMjtSpy.png",
+            ),
           ),
         ],
       ),

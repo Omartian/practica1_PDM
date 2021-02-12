@@ -123,9 +123,7 @@ List<ProductHotDrinks> drinks =
 
 List<ProductGrains> grains = ProductRepository.loadProducts(ProductType.GRANO);
 
-List<ProductItemCart> cartlist = new List<ProductItemCart>();
-
 List<ProductDessert> desserts =
     ProductRepository.loadProducts(ProductType.POSTRES);
 
-List<String> cartProds = new List<String>();
+List<ProductItemCart> cartlist = <ProductItemCart>[];

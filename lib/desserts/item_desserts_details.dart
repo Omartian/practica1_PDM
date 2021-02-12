@@ -1,5 +1,6 @@
 import 'package:estructura_practica_1/cart/payment.dart';
 import 'package:estructura_practica_1/models/product_dessert.dart';
+import 'package:estructura_practica_1/models/product_item_cart.dart';
 import 'package:estructura_practica_1/utils/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -15,9 +16,11 @@ class ItemDessertsDetails extends StatefulWidget {
 }
 
 class _ItemDessertsDetailsState extends State<ItemDessertsDetails> {
+  var _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Text("${widget.dessert.productTitle}"),
         centerTitle: true,
@@ -86,7 +89,7 @@ class _ItemDessertsDetailsState extends State<ItemDessertsDetails> {
                       fontWeight: FontWeight.w300),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(96, 0, 0, 0),
+                  padding: const EdgeInsets.fromLTRB(70, 0, 0, 0),
                   child: Row(
                     children: [
                       Icon(Icons.attach_money),
@@ -161,7 +164,7 @@ class _ItemDessertsDetailsState extends State<ItemDessertsDetails> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+            padding: const EdgeInsets.fromLTRB(0, 22, 0, 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -177,7 +180,9 @@ class _ItemDessertsDetailsState extends State<ItemDessertsDetails> {
                           fontWeight: FontWeight.w300,
                           color: Colors.white),
                     ),
-                    onPressed: () {}),
+                    onPressed: () {
+                      _addToCart();
+                    }),
                 MaterialButton(
                     color: ACCENT_COLOR,
                     height: 50,
@@ -205,5 +210,33 @@ class _ItemDessertsDetailsState extends State<ItemDessertsDetails> {
         ],
       ),
     );
+  }
+
+  void _addToCart() {
+    bool exists = false;
+    for (ProductItemCart product in cartlist) {
+      if (product.productTitle == widget.dessert.productTitle) {
+        exists = true;
+      }
+    }
+    if (!exists) {
+      ProductItemCart product = new ProductItemCart(
+          productTitle: widget.dessert.productTitle,
+          productAmount: 1,
+          productPrice: widget.dessert.productPrice,
+          productImage: widget.dessert.productImage,
+          liked: widget.dessert.liked);
+      cartlist.add(product);
+      final snackBar = SnackBar(content: Text("Producto agregado al carrito"));
+      _scaffoldKey.currentState
+        ..hideCurrentSnackBar()
+        ..showSnackBar(snackBar);
+    } else {
+      final snackBar =
+          SnackBar(content: Text("El producto ya se encontraba en el carrito"));
+      _scaffoldKey.currentState
+        ..hideCurrentSnackBar()
+        ..showSnackBar(snackBar);
+    }
   }
 }
