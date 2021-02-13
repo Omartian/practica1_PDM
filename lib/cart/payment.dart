@@ -15,19 +15,19 @@ class _PaymentState extends State<Payment> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          actions: <Widget>[
+          actions: [
             Image.network(
-              "https://upload.wikimedia.org/wikipedia/commons/c/c5/Roasted_coffee_beans.jpg",
+              "https://i.ibb.co/Vpw2gXR/Captura-de-pantalla-2021-02-12-194843.png",
               fit: BoxFit.fill,
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+              padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
               child: Row(
                 children: <Widget>[
                   Image.network(
-                    "https://cdn2.iconfinder.com/data/icons/circular-icons-filled/78/Circular_Mug-512.png",
-                    width: 40,
-                    height: 40,
+                    "https://i.ibb.co/dDxVByg/Captura-de-pantalla-2021-02-12-193928-removebg-preview.png",
+                    width: 50,
+                    height: 50,
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
@@ -38,12 +38,15 @@ class _PaymentState extends State<Payment> {
                           "¡Orden exitosa!",
                           style: Theme.of(context).textTheme.title,
                         ),
-                        Text(
-                          "Taza Cupping",
-                          style: Theme.of(context)
-                              .textTheme
-                              .title
-                              .copyWith(fontSize: 12),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+                          child: Text(
+                            "Taza Cupping",
+                            style: Theme.of(context)
+                                .textTheme
+                                .title
+                                .copyWith(fontSize: 12),
+                          ),
                         ),
                       ],
                     ),
@@ -53,7 +56,8 @@ class _PaymentState extends State<Payment> {
             ),
             Text(
               "Tu orden ha sido registrada. Para más información busca en la opción historial de compras de tu perfil.",
-              style: Theme.of(context).textTheme.title.copyWith(fontSize: 13),
+              style:
+                  Theme.of(context).textTheme.bodyText1.copyWith(fontSize: 12),
             ),
             FlatButton(
               child: new Text(
@@ -120,7 +124,7 @@ class _PaymentState extends State<Payment> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Image.network(
-                                "https://cdn3.iconfinder.com/data/icons/cash-card-starters-glyph/48/Sed-08-512.png",
+                                "https://i.ibb.co/TRd8p0J/Captura-de-pantalla-2021-02-12-194344-removebg-preview.png",
                                 height: 115,
                                 width: 115,
                               ),
@@ -171,7 +175,7 @@ class _PaymentState extends State<Payment> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Image.network(
-                                "https://cdn3.iconfinder.com/data/icons/cash-card-starters-glyph/48/Sed-08-512.png",
+                                "https://i.ibb.co/N7bGzSQ/Captura-de-pantalla-2021-02-12-194400-removebg-preview.png",
                                 height: 115,
                                 width: 115,
                               ),
@@ -222,7 +226,7 @@ class _PaymentState extends State<Payment> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Image.network(
-                                "https://cdn3.iconfinder.com/data/icons/cash-card-starters-glyph/48/Sed-08-512.png",
+                                "https://i.ibb.co/4pzTQ3f/Captura-de-pantalla-2021-02-12-194415-removebg-preview.png",
                                 height: 115,
                                 width: 115,
                               ),
