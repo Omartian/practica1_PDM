@@ -19,7 +19,7 @@ class _ItemCartState extends State<ItemCart> {
   Widget build(BuildContext context) {
     return Card(
       margin: EdgeInsets.all(10),
-      color: Theme.of(context).splashColor,
+      color: CONTRAST_COLOR,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
@@ -94,9 +94,7 @@ class _ItemCartState extends State<ItemCart> {
                           widget.product.liked
                               ? Icons.favorite
                               : Icons.favorite_border,
-                          color: widget.product.liked
-                              ? Theme.of(context).primaryColor
-                              : null),
+                          color: widget.product.liked ? Colors.red : null),
                       onPressed: () {},
                     ),
                   ),
