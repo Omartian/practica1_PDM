@@ -1,6 +1,8 @@
+import 'package:estructura_practica_1/cart/cart.dart';
 import 'package:estructura_practica_1/desserts/item_desserts.dart';
 import 'package:estructura_practica_1/models/product_dessert.dart';
 import 'package:estructura_practica_1/profile.dart';
+import 'package:estructura_practica_1/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class DessertsPage extends StatelessWidget {
@@ -27,7 +29,11 @@ class DessertsPage extends StatelessWidget {
           ),
           IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => Cart(productsList: cartlist)),
+              );
+            },
           )
         ],
       ),

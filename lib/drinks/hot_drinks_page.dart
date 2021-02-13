@@ -1,4 +1,6 @@
+import 'package:estructura_practica_1/cart/cart.dart';
 import 'package:estructura_practica_1/profile.dart';
+import 'package:estructura_practica_1/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:estructura_practica_1/drinks/item_hot_drinks.dart';
 import 'package:estructura_practica_1/models/product_hot_drinks.dart';
@@ -27,7 +29,11 @@ class HotDrinksPage extends StatelessWidget {
           ),
           IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => Cart(productsList: cartlist)),
+              );
+            },
           )
         ],
       ),

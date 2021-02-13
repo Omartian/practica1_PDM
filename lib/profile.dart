@@ -1,3 +1,5 @@
+import 'package:estructura_practica_1/cart/cart.dart';
+import 'package:estructura_practica_1/login/prelogin.dart';
 import 'package:flutter/material.dart';
 import 'package:estructura_practica_1/utils/constants.dart';
 
@@ -12,7 +14,11 @@ class Profile extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => Cart(productsList: cartlist)),
+              );
+            },
           ),
         ],
       ),
@@ -80,7 +86,11 @@ class Profile extends StatelessWidget {
                   Expanded(
                     child: RaisedButton(
                       child: Text(PROFILE_LOGOUT),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) => Prelogin()),
+                        );
+                      },
                     ),
                   ),
                 ],

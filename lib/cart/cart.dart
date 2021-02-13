@@ -48,7 +48,7 @@ class _CartState extends State<Cart> {
           Stack(
             children: <Widget>[
               Container(
-                height: MediaQuery.of(context).size.height * 0.68,
+                height: MediaQuery.of(context).size.height * 0.65,
                 child: ListView.builder(
                   itemCount: widget.productsList.length,
                   itemBuilder: (BuildContext context, int index) {
